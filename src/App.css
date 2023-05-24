@@ -1,0 +1,28 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* width */
+.customScroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.customScroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.customScroll::-webkit-scrollbar-thumb {
+  background: #cbc7c7;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+.customScroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.homeBackground {
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/spikes.png");
+}
