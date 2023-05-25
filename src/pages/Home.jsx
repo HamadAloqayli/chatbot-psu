@@ -57,7 +57,7 @@ function Home() {
   };
 
   return (
-    <div className="homeBackground bg-gray-50 min-h-screen flex flex-col lg:flex-row justify-between items-center px-4 lg:px-0">
+    <div className="homeBackground bg-gray-50 min-h-screen flex flex-col lg:flex-row justify-between items-center px-4 lg:px-0 pt-24 pb-12">
       <ChatRooms
         chats={chats}
         createChat={createChat}
