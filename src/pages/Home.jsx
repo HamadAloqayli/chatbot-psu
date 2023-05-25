@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { ChatArea, ChatRooms, ProfileArea } from "../components";
+import { ChatArea, ChatRooms, ChatHistory } from "../components";
 import { rooms } from "../data/rooms";
 
 function Home() {
@@ -57,7 +57,7 @@ function Home() {
   };
 
   return (
-    <div className="homeBackground bg-gray-50 min-h-screen flex justify-between items-center">
+    <div className="homeBackground bg-gray-50 min-h-screen flex flex-col lg:flex-row justify-between items-center px-4 lg:px-0">
       <ChatRooms
         chats={chats}
         createChat={createChat}
@@ -67,7 +67,7 @@ function Home() {
         setSelectedChat={setSelectedChat}
       />
       <ChatArea selectedChat={selectedChat} createMessage={createMessage} />
-      <ProfileArea />
+      <ChatHistory />
     </div>
   );
 }
