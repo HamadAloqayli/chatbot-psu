@@ -5,7 +5,7 @@ import SpeechRecognition, {
 import { useEffect, useState } from "react";
 import { ChatFooter, ChatHeader, ChatBody } from ".";
 
-function ChatArea({ selectedChat, createMessage }) {
+function ChatArea({ selectedUseCase }) {
   const {
     transcript,
     listening,
@@ -30,7 +30,6 @@ function ChatArea({ selectedChat, createMessage }) {
   };
 
   const handleInputSubmit = () => {
-    createMessage({ from: "me", text: userInput }, selectedChat.id);
     setUserInput("");
   };
 
@@ -40,8 +39,8 @@ function ChatArea({ selectedChat, createMessage }) {
 
   return (
     <div className="bg-white shadow-lg w-full max-w-2xl h-[600px] rounded-lg flex flex-col justify-between mx-4">
-      <ChatHeader id={selectedChat.id} name={selectedChat.name} />
-      <ChatBody messages={selectedChat.messages} />
+      <ChatHeader selectedUseCase={selectedUseCase} />
+      <ChatBody />
       <ChatFooter
         userInput={userInput}
         handleInputChange={handleInputChange}
