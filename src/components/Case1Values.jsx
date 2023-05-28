@@ -22,10 +22,8 @@ function Case1Values({
       >
         <div className="flex justify-between items-center">
           <p className="w-5/6 truncate text-gray-600 text-sm">Email</p>
-          {case1Errors.includes("email") ? (
+          {case1Errors.email && (
             <BsFillXCircleFill className=" text-red-400 w-1/6" />
-          ) : (
-            <BsFillCheckCircleFill className=" text-teal-400 w-1/6" />
           )}
         </div>
         <div className="flex justify-between items-center text-gray-800 mt-1">
@@ -43,7 +41,9 @@ function Case1Values({
       >
         <div className="flex justify-between items-center">
           <p className="w-5/6 truncate text-gray-600 text-sm">Feedback</p>
-          <BsFillCheckCircleFill className=" text-teal-400 w-1/6" />
+          {case1Errors.feedBack && (
+            <BsFillXCircleFill className=" text-red-400 w-1/6" />
+          )}
         </div>
         <div className="flex justify-between items-center text-gray-800 mt-1">
           <p>

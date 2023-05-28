@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChatArea, ChatRooms, ChatHistory } from "../components";
-
+import validator from "validator";
 function Home() {
   const [selectedUseCase, setSelectedUseCase] = useState({ case: 1, input: 1 });
   const [case1Values, setCase1Values] = useState({ email: "", feedBack: "" });
@@ -9,21 +9,13 @@ function Home() {
     employeeName: "",
     attendanceFile: null,
   });
-  const [case1Errors, setCase1Errors] = useState([]);
+  const [case1Errors, setCase1Errors] = useState({
+    email: false,
+    feedBack: false,
+  });
 
   const handleCase1Values = (key, value) => {
     if (key === "email") {
-      //   if (
-      //     !value ||
-      //     !String(value)
-      //       .toLowerCase()
-      //       .match(
-      //         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      //       )
-      //   ) {
-      //     setCase1Errors((prevState) => [...prevState, "email"]);
-      //   }
-
       setCase1Values((prevState) => {
         return { ...prevState, email: value };
       });
@@ -50,7 +42,33 @@ function Home() {
     }
   };
 
-  const handleCase1Submit = () => {};
+  const handleCase1Submit = () => {
+    let res = checkValidity();
+
+    if (res) {
+      console.log(case1Values);
+    }
+  };
+
+  const checkValidity = () => {
+    let flag = true;
+
+    if (!validator.isEmail(case1Values.email)) {
+      setCase1Errors((prevState) => {
+        return { ...prevState, email: true };
+      });
+      flag = false;
+    }
+
+    if (validator.isEmpty(case1Values.feedBack)) {
+      setCase1Errors((prevState) => {
+        return { ...prevState, feedBack: true };
+      });
+      flag = false;
+    }
+
+    return flag;
+  };
 
   return (
     <div className="homeBackground bg-gray-50 min-h-screen flex flex-col lg:flex-row justify-between items-center px-4 lg:px-0 pt-24 pb-12">
@@ -64,6 +82,7 @@ function Home() {
         handleCase1Values={handleCase1Values}
         case2Values={case2Values}
         handleCase2Values={handleCase2Values}
+        setCase1Errors={setCase1Errors}
       />
       <ChatHistory
         selectedUseCase={selectedUseCase}

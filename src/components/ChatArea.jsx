@@ -12,6 +12,7 @@ function ChatArea({
   handleCase1Values,
   case2Values,
   handleCase2Values,
+  setCase1Errors,
 }) {
   const {
     transcript,
@@ -57,21 +58,34 @@ function ChatArea({
       >
         {selectedUseCase.case === 1 && selectedUseCase.input === 1 && (
           <CustomInput
+            type="email"
             value={case1Values.email}
             onChange={(e) => handleCase1Values("email", e.target.value)}
+            onFocus={() =>
+              setCase1Errors((prevState) => {
+                return { ...prevState, email: false };
+              })
+            }
             placeholder="Enter your email"
           />
         )}
         {selectedUseCase.case === 1 && selectedUseCase.input === 2 && (
           <CustomInput
+            type="text"
             value={case1Values.feedBack}
             onChange={(e) => handleCase1Values("feedBack", e.target.value)}
+            onFocus={() =>
+              setCase1Errors((prevState) => {
+                return { ...prevState, feedBack: false };
+              })
+            }
             placeholder="Enter your feedback"
           />
         )}
 
         {selectedUseCase.case === 2 && selectedUseCase.input === 1 && (
           <CustomInput
+            type="email"
             value={case2Values.managerEmail}
             onChange={(e) => handleCase2Values("managerEmail", e.target.value)}
             placeholder="Enter manager email"
@@ -79,6 +93,7 @@ function ChatArea({
         )}
         {selectedUseCase.case === 2 && selectedUseCase.input === 2 && (
           <CustomInput
+            type="text"
             value={case2Values.employeeName}
             onChange={(e) => handleCase2Values("employeeName", e.target.value)}
             placeholder="Enter employee name"
@@ -86,6 +101,7 @@ function ChatArea({
         )}
         {selectedUseCase.case === 2 && selectedUseCase.input === 3 && (
           <CustomInput
+            type="text"
             value={case2Values.attendanceFile}
             onChange={(e) =>
               handleCase2Values("attendanceFile", e.target.value)
