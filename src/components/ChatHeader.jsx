@@ -4,7 +4,7 @@ function ChatHeader({ selectedUseCase }) {
       <div className="flex justify-center items-center space-x-5">
         <div>
           <p className="text-gray-600 font-bold text-xl">
-            {selectedUseCase === 1
+            {selectedUseCase.case === 1
               ? "Automated Customer Support"
               : "Automated HR Attendance Reporting System"}
           </p>

@@ -1,6 +1,7 @@
 import { IoSend } from "react-icons/io5";
 import { BsFillMicFill, BsFillSendFill } from "react-icons/bs";
 import { RiVoiceprintFill } from "react-icons/ri";
+import CustomInput from "./CustomInput";
 
 function ChatFooter({
   userInput,
@@ -8,17 +9,11 @@ function ChatFooter({
   handleInputSubmit,
   handleVoiceSubmit,
   listening,
+  children,
 }) {
   return (
     <div className="flex justify-between items-center space-x-5 p-4 border-t-2 border-t-gray-200">
-      <div className="flex-1">
-        <textarea
-          value={userInput}
-          onChange={handleInputChange}
-          placeholder="Write a message ..."
-          className="w-full bg-gray-100 text-gray-800 rounded-md outline-gray-300 p-2"
-        />
-      </div>
+      <div className="flex-1">{children}</div>
 
       <div className="flex justify-center items-center space-x-5">
         <button
